@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>buttons</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="css/main.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <p id="name"><span class="underline">James Kao</span></p>
+        <p id="drag_info">Drag Here</p>
+        <button type="button" class="btn">bio</button>
+            <div class="dropdown">
+                <p>about/</p>
+                <div class="subdir">
+                    <p style="width: 400px">Hey there! I'm a student studying graphic design at RISD and computer science at Brown. I love making things so come click and drag some of those buttons to see my work.</p>
+                </div>
+                <p>resume (pdf)</p>
+                <p>contact/</p>
+                <div class="subdir">
+                    <p>james.l.kao@gmail.com</p>
+                    <p>408.513.4671</p>
+                </div>
+            </div>
+        <button type="button" class="btn">illustration</button>
+            <div class="dropdown">
+                <p>work/</p>
+                <div class="subdir">
+                    <a><p>all <span class="arrow">&#168</span></p></a>
+                    <a><p>personal work <span class="arrow">&#168</span></p></a>
+                    <a><p>entertainment design <span class="arrow">&#168</span></p></a>
+                </div>
+            </div>
+        <!-- dotted red lines?-->
+        <button type="button" class="btn">graphic design</button>
+            <div class="dropdown">
+                <p>classes/</p>
+                <div class="subdir">
+                    <p>foundation design studio 1 + 2</p>
+                    <p>typography 1</p>
+                    <p>*typography 2</p>
+                    <p>*color</p>
+                    <p class="footnote">* - in-progress class</p>
+                </div>
+                <p>projects/</p>
+                <div class="subdir">
+                    <a><p>Identity Series <span class="arrow">&#168</span></p></a>
+                    <a><p>Moving Type <span class="arrow">&#168</span></p></a>
+                    <a><p>Synesthesia Type <span class="arrow">&#168</span></p></a>
+                </div>
+            </div>
+        <button type="button" class="btn">computer science</button>
+            <div class="dropdown">
+                <p>classes/</p>
+                <div class="subdir">
+                    <p>cs61a  - Structure and Interpretation of Computer Programs</p>
+                    <p>cs16   - Algorithms and Data Structures</p>
+                    <p>cs70   - Discrete Mathematics and Probability Theory</p>
+                    <p>math54 - Linear Algebra</p>
+                    <p>cs157  - Design and Analysis of Algorithms</p>
+                    <p>cs33   - Introduction to Computer Systems</p>
+                    <p>*cs167 - Operating Systems</p>
+                    <p>*cs169 - Operating Systems lab</p>
+                    <p class="footnote">* - in-progress class</p>
+                </div>
+                <p>projects/</p>
+                <div class="subdir">
+                    <a href="http://www.google.com"><p>pixelcraft - a game where individuals can create their own sprites and animations <span class="arrow">&#168</span></p></a>
+                    <p>weenix     - a simple operating system based off of linux built mostly from scratch</p>
+                    <p>snowcast   - a simple client to radio station program that uses UDP and TCP protocols</p>
+                    <p>scheme interpreter- an interpreter for a subset of the Scheme Language</p>
+                </div>
+            </div>
+        
+        
+        
+        <div id="illustration_overlay">
+            <div class="navigation_images">
+                <div class="positioner">
+                    <img style="width: 75px">
+                    <img id="current_image_set" style="width: 150px">
+                    <img style="width: 50px">
+                    <img style="width: 75px">
+                    <img style="width: 100px">
+                </div>
+            </div>
+            <div class="feature_images">
+                <!--<img style="width: 300px">
+                <img style="width: 300px">
+                <img style="width: 300px">
+                <img style="width: 300px">
+                <img style="width: 300px">-->
+                <img draggable="false" src="img/illustration/set1/2012_lotus.jpg">
+                <img draggable="false" src="img/illustration/set1/2014_butterfly.jpg">
+                <img draggable="false" src="img/illustration/set1/2014_guide.png">
+                <img draggable="false" src="img/illustration/set1/2014_wolf.png">
+                <img draggable="false" src="img/illustration/set1/2013_vertigo.jpg">
+            </div>
+            <div class="subdir">
+                <div class="positioner">
+                    <p>illustration piece 1. 2013.</p>
+                    <p>illustration piece 2. 2014.</p>
+                    <p>illustration piece 3. 2014.</p>
+                    <p>illustration piece 4. 2015.</p>
+                    <p>illustration piece 5. 2014.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="js/script.js"></script>
+</html>

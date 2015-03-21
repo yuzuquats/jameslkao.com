@@ -1,0 +1,146 @@
+/*  Main  */
+    
+    html {
+        font-family: 'Open Sans', sans-serif;
+        overflow: hidden;
+    }
+
+    #name {
+        margin: 0px;
+        width: auto;
+        text-decoration: underline;
+    }
+
+    img {
+        #background: rgba(100,100,100,50);
+    }
+
+    #drag_info {
+        width: 200px;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        margin: 0px;
+        font-size: 14px;
+        color: rgb(50, 50, 50);
+        #display: none;
+        opacity: 0;
+    }
+
+/*  Buttons  */
+
+    .btn {
+        font-family: 'Open Sans', sans-serif;
+        position: absolute;
+        z-index: 999;
+    }
+
+    .dropdown {
+        position: absolute;
+        display: none;
+        z-index: 999;
+    }
+
+    .dropdown p {
+        margin: 0px;
+        font-size: 14px;
+        color: blue;
+        text-decoration: underline;
+    }
+
+    .subdir {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .subdir p {
+        text-decoration: none;
+        color: black;
+        position: relative;
+        left: 10px;
+        font-size: 12px;
+    }
+
+    .footnote {
+        padding-top: 10px;
+        padding-left: 6px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: black;
+        text-decoration: underline;
+    }
+
+    .arrow {
+        font-family: 'Wingdings 3';
+    }
+
+/*  Illustration */
+
+    #illustration_overlay {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        display: inline-block;;
+        white-space: nowrap;
+        display: none;
+        width: 100%;
+    }
+
+    #illustration_overlay .subdir {
+        position: relative;
+        width: 300px;
+        float: right;
+    }
+
+    #illustration_overlay p {
+        margin-bottom: 3px;
+        margin-top: 3px;
+        text-align: right;
+        left: 0px;
+    }
+
+    /*div.fixed*/
+    .navigation_images {
+        position: fixed;
+        left: 40px;
+        top: -40px;
+    }
+
+    .navigation_images img {
+        height: 30px;
+    }
+
+    /*div.inflow*/
+    .feature_images {
+        position: relative;
+        left: 0px; /*use to shift images*/
+        height: 505px;
+    }
+
+    .feature_images img {
+        height: 500px;
+        width: auto;
+        display: none;
+        #cursor: pointer;
+    }
+
+    #current_image_set {
+        #padding: 1px;
+        border-style: solid;
+        border-color: blue;
+        border-width: 1px;
+    }
+
+    #illustration_overlay .subdir {
+        position: fixed;
+        right: 40px;
+        bottom: -120px;
+    }
