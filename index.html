@@ -9,9 +9,13 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <p id="name"><span class="underline">James Kao</span></p>
-        <p id="drag_info">Drag Here</p>
-        <button type="button" class="btn">bio</button>
+        <!--<p id="test_info">touch position</p>-->
+        
+        <p id="name" onclick="show_main()">James Kao</p>
+        <div id="drag_info"><p>Drag Here</p></div>
+        <p id="header">personal work <span class="arrow">&#149</span></p>
+        
+        <button type="button" class="btn">bio <span class="arrow">&#168</span></button>
             <div class="dropdown">
                 <p>about/</p>
                 <div class="subdir">
@@ -24,17 +28,17 @@
                     <p>408.513.4671</p>
                 </div>
             </div>
-        <button type="button" class="btn">illustration</button>
+        <button type="button" class="btn">illustration <span class="arrow">&#168</span></button>
             <div class="dropdown">
                 <p>work/</p>
                 <div class="subdir">
-                    <a><p>all <span class="arrow">&#168</span></p></a>
                     <a><p>personal work <span class="arrow">&#168</span></p></a>
                     <a><p>entertainment design <span class="arrow">&#168</span></p></a>
+                    <a><p>editorial and other work <span class="arrow">&#168</span></p></a>
                 </div>
             </div>
         <!-- dotted red lines?-->
-        <button type="button" class="btn">graphic design</button>
+        <button type="button" class="btn">graphic design <span class="arrow">&#168</span></button>
             <div class="dropdown">
                 <p>classes/</p>
                 <div class="subdir">
@@ -46,12 +50,16 @@
                 </div>
                 <p>projects/</p>
                 <div class="subdir">
-                    <a><p>Identity Series <span class="arrow">&#168</span></p></a>
-                    <a><p>Moving Type <span class="arrow">&#168</span></p></a>
-                    <a><p>Synesthesia Type <span class="arrow">&#168</span></p></a>
+                    <a><p>identity series <span class="arrow">&#168</span></p></a>
+                    <a><p>moving type <span class="arrow">&#168</span></p></a>
+                    <a><p>synesthesia type <span class="arrow">&#168</span></p></a>
+                </div>
+                <p>work/</p>
+                <div class="subdir">
+                    <a><p>typography <span class="arrow">&#168</span></p></a>
                 </div>
             </div>
-        <button type="button" class="btn">computer science</button>
+        <button type="button" class="btn">computer science <span class="arrow">&#168</span></button>
             <div class="dropdown">
                 <p>classes/</p>
                 <div class="subdir">
@@ -67,47 +75,69 @@
                 </div>
                 <p>projects/</p>
                 <div class="subdir">
-                    <a href="http://www.google.com"><p>pixelcraft - a game where individuals can create their own sprites and animations <span class="arrow">&#168</span></p></a>
+                    <a target="_blank" href="http://pi-xel.heroku.com"><p>pixelcraft - a game where individuals can create their own sprites and animations <span class="arrow">&#168</span></p></a>
                     <p>weenix     - a simple operating system based off of linux built mostly from scratch</p>
                     <p>snowcast   - a simple client to radio station program that uses UDP and TCP protocols</p>
                     <p>scheme interpreter- an interpreter for a subset of the Scheme Language</p>
                 </div>
             </div>
         
-        
-        
         <div id="illustration_overlay">
             <div class="navigation_images">
                 <div class="positioner">
-                    <img style="width: 75px">
-                    <img id="current_image_set" style="width: 150px">
+                    <img id="current_image_set" style="width: 75px">
+                    <img style="width: 150px">
                     <img style="width: 50px">
                     <img style="width: 75px">
-                    <img style="width: 100px">
+                    <!--<img style="width: 100px">-->
                 </div>
             </div>
-            <div class="feature_images">
-                <!--<img style="width: 300px">
-                <img style="width: 300px">
-                <img style="width: 300px">
-                <img style="width: 300px">
-                <img style="width: 300px">-->
-                <img draggable="false" src="img/illustration/set1/2012_lotus.jpg">
-                <img draggable="false" src="img/illustration/set1/2014_butterfly.jpg">
-                <img draggable="false" src="img/illustration/set1/2014_guide.png">
-                <img draggable="false" src="img/illustration/set1/2014_wolf.png">
-                <img draggable="false" src="img/illustration/set1/2013_vertigo.jpg">
+            <div class="feature_images"> <!-- 10 images max (tmp) -->
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <img draggable="false">
+                <p onclick="next_ill_set()">next set <span id="page_num">-1/5</span> <span class="arrow">&#168</span></p>
             </div>
-            <div class="subdir">
+            <div id="art_info" class="subdir">
                 <div class="positioner">
-                    <p>illustration piece 1. 2013.</p>
-                    <p>illustration piece 2. 2014.</p>
-                    <p>illustration piece 3. 2014.</p>
-                    <p>illustration piece 4. 2015.</p>
-                    <p>illustration piece 5. 2014.</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+            <div id="art_drag_info" class="subdir">
+                <div class="positioner">
+                    <p><span class="arrow">&#167</span> drag <span class="arrow">&#168</span></p>
                 </div>
             </div>
         </div>
+        
+        <!--<div id="graphicdesign_overlay">
+            <div class="navigation_images">
+                <div class="positioner">
+                </div>
+            </div>
+            
+        </div>-->
+        
+        
+        
+        
+        
     </body>
     <script type="text/javascript" src="js/script.js"></script>
 </html>

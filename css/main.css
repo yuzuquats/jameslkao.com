@@ -1,31 +1,90 @@
 /*  Main  */
-    
+
     html {
         font-family: 'Open Sans', sans-serif;
         overflow: hidden;
+        #background: rgb(240,240,240);
+    }
+
+    body {
+        margin: 0px;
+        margin-top: 18px;
     }
 
     #name {
         margin: 0px;
+        margin-left: 40px;
         width: auto;
         text-decoration: underline;
+        font-size: 16px;
+    }
+
+    #header {
+        position: absolute;
+        margin: 0px;
+        margin-right: 10px;
+        top: 17px;
+        right: 335px;
+        #left: -100px;
+        width: 300px;
+        text-align: right;
+        font-size: 16px;
+        display: none;
     }
 
     img {
-        #background: rgba(100,100,100,50);
+        background: rgb(240,240,240);
     }
 
     #drag_info {
-        width: 200px;
         position: absolute;
-        top: 8px;
-        left: 50%;
-        transform: translate(-50%, 0%);
+        #top: 0px;
+        #left: 50%;
+        #transform: translate(-50%, 0%);
+        top: 0px;
+        right: 223px;
+        
         margin: 0px;
+        display: none;
+        opacity: 0;
+        width: 150px;
+        height: 45px;
+        border-style: none dashed dashed dashed;
+        border-color: black;
+        border-width: 1px;
+    }
+
+    #drag_info p {
         font-size: 14px;
         color: rgb(50, 50, 50);
-        #display: none;
-        opacity: 0;
+        #color: blue;
+        margin: 0px;
+        /*18px to align to the name*/
+        #margin-top: 18px;
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    p {
+        color: black;
+    }
+
+    a p {
+        color: blue;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover p {
+        color: black;
+        text-decoration: underline;
+    }
+
+    #test_info {
+        position: absolute;
+        bottom: 100px;
     }
 
 /*  Buttons  */
@@ -34,18 +93,35 @@
         font-family: 'Open Sans', sans-serif;
         position: absolute;
         z-index: 999;
+        font-size: 16px;
+        #color: blue;
+        
+        /* remove the buttony stuff */
+        background:none;
+        border:none;
+        margin:0;
+        padding:0;
+    }
+
+    .btn:focus {
+        outline: 0;
+    }
+
+    .btn:hover {
+        color: black;
+        text-decoration: underline;
     }
 
     .dropdown {
         position: absolute;
         display: none;
-        z-index: 999;
+        z-index: 998;
     }
 
     .dropdown p {
         margin: 0px;
         font-size: 14px;
-        color: blue;
+        #color: blue;
         text-decoration: underline;
     }
 
@@ -56,7 +132,7 @@
 
     .subdir p {
         text-decoration: none;
-        color: black;
+        #color: black;
         position: relative;
         left: 10px;
         font-size: 12px;
@@ -67,17 +143,9 @@
         padding-left: 6px;
     }
 
-    a {
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: black;
-        text-decoration: underline;
-    }
-
     .arrow {
-        font-family: 'Wingdings 3';
+        font-family: 'WingDings 3';
+        font-size: 12px;
     }
 
 /*  Illustration */
@@ -94,16 +162,39 @@
         width: 100%;
     }
 
-    #illustration_overlay .subdir {
+/*
+    #illustration_overlay:drag {
+        cursor: default;
+    }
+*/
+
+    /*#illustration_overlay .subdir {
         position: relative;
         width: 300px;
         float: right;
+    }*/
+
+    #illustration_overlay .subdir {
+        position: fixed;
+        width: 300px;
+    }
+
+    #art_info {
+        right: 40px;
+        #bottom: -120px;
+        top: 510px;
+    }
+
+    #art_drag_info {
+        right: 340px;
+        bottom: -40px;
     }
 
     #illustration_overlay p {
         margin-bottom: 3px;
         margin-top: 3px;
-        text-align: right;
+        #text-align: right;
+        text-align: left;
         left: 0px;
     }
 
@@ -121,7 +212,7 @@
     /*div.inflow*/
     .feature_images {
         position: relative;
-        left: 0px; /*use to shift images*/
+        left: 40px; /*use to shift images -- initialized by javascript as well*/
         height: 505px;
     }
 
@@ -132,15 +223,23 @@
         #cursor: pointer;
     }
 
+    .feature_images p {
+        margin: 0px;
+        margin-left: 20px;
+        position: relative;
+        top: -50%;
+        transform: translate(0%, 50%);
+        font-size: 14px;
+    }
+
+    .feature_images p:hover {
+        text-decoration: underline;
+    }
+
+
     #current_image_set {
         #padding: 1px;
         border-style: solid;
         border-color: blue;
         border-width: 1px;
-    }
-
-    #illustration_overlay .subdir {
-        position: fixed;
-        right: 40px;
-        bottom: -120px;
     }
