@@ -1,6 +1,9 @@
 var btns = document.getElementsByClassName("btn");
 var infos = document.getElementsByClassName("dropdown");
+
 var illustration_overlay = document.getElementById("illustration_overlay");
+var gd_overlay = document.getElementById("gd_overlay");
+
 var html = document.getElementsByTagName("html")[0];
 var drag_info = document.getElementById("drag_info");
 var header = document.getElementById("header");
@@ -72,6 +75,7 @@ main();
 var resize_timeout;
 function main(){
     illustration_overlay.revealed = false;
+    gd_overlay.revealed = false;
     
     resize_page();
     btn_init();
@@ -82,6 +86,8 @@ function main(){
     illustration_overlay.addEventListener("mousewheel", mouse_scroll, false);
     illustration_overlay.addEventListener("DOMMouseScroll", mouse_scroll, false);
     console.log("complete");
+    
+    hide_other_buttons(GD_INDEX);
 }
 
 function resize_page(){
@@ -105,6 +111,9 @@ function resize_page(){
             btns[i].style.left = Math.random()*(WIDTH - 100) + 50 + "px";
         }
     }
+    
+    gd_overlay.style.width = WIDTH - 80 + "px";
+    gd_overlay.style.height = HEIGHT - 100 + "px";
 }
 
 function category(){
@@ -227,13 +236,29 @@ function btn_init(){
                     illustration_overlay.revealed = true;
 
                     header.style.display = "block";
-                    // TODO -- does this actually make a difference?
-                    // How can we load the page structure first (illustration_overlay) and then the images?
-//                    if (!loaded){
-//                        for (var i = 0; i < feature_images.children.length; i++){
-//                            feature_images.children[i].style.display = "inline-block";
-//                        }
-//                    }
+                    
+                } else if (curr_btn.index == GD_INDEX){
+                    
+                    if (!illustration_overlay.revealed){
+                        feature_images.style.left = "40px";
+                        fadeout(drag_info);
+                        //load_ill_set(0);
+                    }
+                    
+                    curr_btn.y = 17;
+                    curr_btn.style.top = 17+"px";
+                    curr_btn.info.style.top = 47+"px"; //30+17
+
+                    curr_btn.x = WIDTH-340;
+                    curr_btn.style.left = WIDTH-340+"px";
+                    curr_btn.info.style.left = WIDTH-340+"px";
+                    
+                    // Show the illustration page
+                    gd_overlay.style.display = "block";
+                    hide_other_buttons(curr_btn.index);
+                    gd_overlay.revealed = true;
+
+                    header.style.display = "block";
                 }
                 
             } else {
