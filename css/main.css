@@ -156,7 +156,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 0;
-        display: inline-block;;
+        display: inline-block;
         white-space: nowrap;
         display: none;
         width: 100%;
@@ -246,10 +246,70 @@
 
 /*  Graphic Design  */
     #gd_overlay {
+        margin-top: 35px;
+        margin-left: 360px;
+        display: none;
+        position: relative;
+        top: 0px;
+    }
+
+    .gd_projects {
+        width: 100%;
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 50px;
+        vertical-align: top;
+    }
+
+    .gd_projects h1 {
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+
+    .gd_projects img {
         background-color: lightgray;
-        #height: px;
-        #display: none;
+        padding: 0px;
+        margin-bottom: 10px;
+        vertical-align: top;
         
-        margin-top: 10px;
-        margin-left: 40px;
+        display: inline-block;
+    }
+
+    .l1 {
+        width: 100%;
+        #height: auto;
+        height: 300px;
+    }
+
+    .l2_1 {
+        width: 49.5%;
+        #height: auto;
+        height: 200px;
+        margin-right: 1%;
+    }
+
+    .l2_2 {
+        width: 49.5%;
+        #height: auto;
+        height: 200px;
+    }
+
+    .l3_1 {
+        width: 32.66%;
+        #height: auto;
+        height: 100px;
+        margin-right: 1%;
+    }
+
+    .l3_2 {
+        width: 32.66%;
+        #height: auto;
+        height: 100px;
+    }
+
+    .image_set {
+        #display: inline-block;
+        margin-bottom: 30px;
+        font-size: 0px;
     }
