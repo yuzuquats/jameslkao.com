@@ -247,10 +247,15 @@
 /*  Graphic Design  */
     #gd_overlay {
         margin-top: 35px;
-        margin-left: 360px;
+        margin-left: 40px;
         display: none;
         position: relative;
         top: 0px;
+    }
+
+    #feature_projects {
+        position: fixed;
+        height: 100%;
     }
 
     .gd_projects {

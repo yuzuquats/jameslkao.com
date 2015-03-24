@@ -13,7 +13,7 @@ var feature_images = document.getElementsByClassName("feature_images")[0];
 var navigation_images = document.getElementsByClassName("navigation_images")[0].children[0].children;
 var art_info = document.getElementById("art_info").children[0];
 
-//var test_info = document.getElementById("test_info");
+var header_name = document.getElementById("name");
 
 var HEIGHT,
     WIDTH;
@@ -52,8 +52,8 @@ function main(){
     illustration_overlay.addEventListener("mousewheel", mouse_scroll, false);
     illustration_overlay.addEventListener("DOMMouseScroll", mouse_scroll, false);
     
-    gd_overlay.addEventListener("mousewheel", mouse_scroll, false);
-    gd_overlay.addEventListener("DOMMouseScroll", mouse_scroll, false);
+    document.addEventListener("mousewheel", mouse_scroll, false);
+    document.addEventListener("DOMMouseScroll", mouse_scroll, false);
     
     console.log("complete");
     
@@ -64,7 +64,7 @@ function resize_page(){
     HEIGHT = Math.max(window.innerHeight, 50);
     WIDTH = Math.max(window.innerWidth, 50);
     
-    gd_overlay.style.width = WIDTH - 360 - 340 - 100 + "px";
+    gd_overlay.style.width = WIDTH - 360 - 200 + "px";
     gd_overlay.style.height = HEIGHT - 100 + "px";
     
     console.log("page resized to x: " + HEIGHT + " y: " + WIDTH);
@@ -124,6 +124,7 @@ function show_main(){
     show_buttons();
     overlays[curr_btn.index].revealed = false;
     header.style.display = "none";
+    name.style.display = "block";
     
     if (curr_btn.index == IL_INDEX){
         navigation_images[illustration_category.curr_set].removeAttribute("id");
@@ -203,14 +204,27 @@ function mouse_scroll(event){
     if (curr_btn.index == IL_INDEX){
         feature_images.offset_x = px_to_int(feature_images.style.left);
         feature_images.style.left = feature_images.offset_x + rolled + "px";
-    } else if (curr_btn.index == GD_INDEX){
-        console.log("top11: " + gd_overlay.style.top);
-        gd_overlay.offset_y = px_to_int(gd_overlay.style.top);
-        console.log("top: " + gd_overlay.offset_y);
-        gd_overlay.style.top = gd_overlay.offset_y + rolled + "px";
+    } 
+    
+    if (gd_overlay.revealed){
+        var new_y = px_to_int(gd_overlay.style.top) + rolled;
+        if (new_y > 0){
+            gd_overlay.style.top = "0px";
+        } else {
+            gd_overlay.style.top = new_y + "px";
+        }
+        
+        console.log(new_y);
+        
+        if (new_y > -120){
+            header_name.style.display = "block";
+        } else {
+            header_name.style.display = "none";
+        }
+        
     }
     
-    console.log(rolled);
+    //console.log(rolled);
 }
 
 function px_to_int(px){
