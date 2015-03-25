@@ -69,7 +69,7 @@ function resize_page(){
     HEIGHT = Math.max(window.innerHeight, 50);
     WIDTH = Math.max(window.innerWidth, 50);
     
-    gd_overlay.style.width = WIDTH - 360 - 200 + "px";
+    gd_overlay.style.width = WIDTH - 360 + "px";
     gd_overlay.style.height = HEIGHT - 100 + "px";
     
     console.log("page resized to x: " + HEIGHT + " y: " + WIDTH);
@@ -173,7 +173,7 @@ function gd_nav_jump(index){
         // show the overlay
         overlays[curr_btn.index].style.display = "inline-block";
         hide_other_buttons(curr_btn.index);
-        header.style.display = "block";
+        //header.style.display = "block";
                         
         gd_overlay.style.top = "0px";
         fadeout(drag_info);
@@ -233,6 +233,8 @@ function ill_nav_jump(category_index, index){
     }
     
     load_set(IL_INDEX, category_index, index);
+    
+    header.innerHTML = illustration_work[curr_ill_cat].name;
 }
 
 //// Load Sets

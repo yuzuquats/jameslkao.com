@@ -7,7 +7,7 @@ var ed_set_1;
 var sk_set_1, sk_set_2, sk_set_3;
 
 {
-    personal_work = new category();
+    personal_work = new category("personal work");
     
     ill_set_1 = new image_set("img/ill/personal_work/", "set1/", 0);
     ill_set_1.add_image("2013_vertigo", "vertigo 2013 spring issue, verity. 2013.");
@@ -32,7 +32,7 @@ var sk_set_1, sk_set_2, sk_set_3;
 }
 
 {
-    entertainment_design = new category();
+    entertainment_design = new category("entertainment design");
     
     ed_set_1 = new image_set("img/ill/entertainment_design/", "set1/", 0);
     ed_set_1.add_image("feb_18", "Feb 18. 2015.");
@@ -44,7 +44,7 @@ var sk_set_1, sk_set_2, sk_set_3;
 }
 
 {
-    sketches = new category();
+    sketches = new category("sketches");
     
     sk_set_1 = new image_set("img/ill/sketches/", "set1/", 0);
     sk_set_1.add_image("2011_Untitled_Sketch1", "untitled sketch 1. 2011.");
@@ -82,7 +82,8 @@ var sk_set_1, sk_set_2, sk_set_3;
     illustration_work.push(sketches);
 }
 
-function category(){
+function category(name){
+    this.name = name +  '<span class="arrow">&#149</span>';
     this.image_sets = [];
     this.curr_set = 0;
     this.size = 0;

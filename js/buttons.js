@@ -94,6 +94,7 @@ function btn_init(){
                             shrink_ill_info();
                         }
                         
+                        header.style.display = "block";
                     }
 
                     curr_btn.y = 17;
@@ -107,7 +108,6 @@ function btn_init(){
                     // show the overlay
                     overlays[curr_btn.index].style.display = "inline-block";
                     hide_other_buttons(curr_btn.index);
-                    header.style.display = "block";
                     
                     if (curr_btn.index == GD_INDEX &&
                         !overlays[curr_btn.index].revealed){

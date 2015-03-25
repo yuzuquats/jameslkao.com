@@ -76,7 +76,7 @@
 
     a {
         text-decoration: none;
-        cursor: default;
+        cursor: pointer;
         color: blue;
     }
 
@@ -96,6 +96,26 @@
 
     #resume:hover {
         cursor: pointer;
+    }
+
+    #todo {
+        opacity: 0.3;
+        position: fixed;
+        left: 40px;
+        bottom: 40px;
+        font-size: 12px;
+    }
+    
+    #todo p:first-child {
+        margin-bottom: 10px;
+    }
+
+    #todo p {
+        margin: 0px;
+    }
+
+    #todo:hover {
+        opacity: .8;
     }
 
 /*  Buttons  */
@@ -276,7 +296,8 @@
     }
 
     .gd_projects {
-        width: 100%;
+        #width: 100%;
+        width: 500px;
         display: inline-block;
         font-size: 12px;
         margin-right: 50px;
