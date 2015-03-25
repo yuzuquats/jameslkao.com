@@ -88,7 +88,11 @@ function btn_init(){
                         
                         feature_images.style.left = "40px";
                         fadeout(drag_info);
-                        load_set(curr_btn.index, 0);
+                        load_set(curr_btn.index, 0, 0);
+                        
+                        if (HEIGHT < 900){
+                            shrink_ill_info();
+                        }
                         
                     }
 
@@ -131,6 +135,7 @@ function btn_init(){
                     // hide the overlay
                     console.log("DRAGGED TO BOTTOM HALF");
                     show_main();
+                    grow_ill_info();
 
                 }
             }

@@ -42,11 +42,12 @@ var resize_timeout;
 function main(){
     illustration_overlay.revealed = false;
     gd_overlay.revealed = false;
-    
     gd_overlay.loaded = false;
     
     btn_init();
     resize_page();
+    
+    btns[BIO_INDEX].info.style.display = "block";
     
     window.onresize = function(event) {
         clearTimeout(resize_timeout);
@@ -73,6 +74,12 @@ function resize_page(){
     
     console.log("page resized to x: " + HEIGHT + " y: " + WIDTH);
     
+    if (HEIGHT < 900 && illustration_overlay.revealed){
+        shrink_ill_info();
+    } else {
+        grow_ill_info();
+    }
+    
     for (var i = 0; i < btns.length; i++){
         if ((i == IL_INDEX && illustration_overlay.revealed) ||
             (i == GD_INDEX && gd_overlay.revealed)) {
@@ -89,7 +96,7 @@ function resize_page(){
             btns[i].style.top = "50px";
             btns[i].style.left = "40px";
             btns[i].info_opened = true;
-            btns[i].info.style.display = "block";
+            //btns[i].info.style.display = "block";
             
         } else {
             btns[i].style.top = Math.random()*(HEIGHT - 300) + 150 + "px";
@@ -131,7 +138,9 @@ function show_main(){
     header_name.style.display = "block";
     
     if (curr_btn.index == IL_INDEX){
-        navigation_images[illustration_category.curr_set].removeAttribute("id");
+        var cat = illustration_work[curr_ill_cat];
+        
+        navigation_images[cat.curr_set].removeAttribute("id");
         navigation_images[0].setAttribute("id", "current_image_set");
         
         if (curr_btn.info_opened){
@@ -147,7 +156,7 @@ function show_main(){
 }
 
 function gd_nav_jump(index){
-    console.log("gd_overlay.jump_values " + gd_overlay.jump_values);
+    //console.log("gd_overlay.jump_values " + gd_overlay.jump_values);
     
     curr_btn = btns[GD_INDEX];
     
@@ -194,26 +203,65 @@ function gd_nav_jump(index){
     gd_overlay.style.top = -gd_overlay.jump_values[index] + "px";
 }
 
+function ill_nav_jump(category_index, index){
+    curr_btn = btns[IL_INDEX];
+    
+    if (!illustration_overlay.revealed){
+        console.log("not revealed");
+        curr_btn.y = 17;
+        curr_btn.style.top = 17+"px";
+        curr_btn.info.style.top = 47+"px"; //30+17
+
+        curr_btn.x = WIDTH-340;
+        curr_btn.style.left = WIDTH-340+"px";
+        curr_btn.info.style.left = WIDTH-340+"px";
+
+        // show the overlay
+        overlays[curr_btn.index].style.display = "inline-block";
+        hide_other_buttons(curr_btn.index);
+        header.style.display = "block";
+                        
+        feature_images.style.left = "40px";
+        fadeout(drag_info);
+        load_set(curr_btn.index, 0, 0);
+                        
+        if (HEIGHT < 900){
+            shrink_ill_info();
+        }
+        
+        illustration_overlay.revealed = true;
+    }
+    
+    load_set(IL_INDEX, category_index, index);
+}
+
 //// Load Sets
 
-function load_set(type, index){
-    //console.log("loading set " + index);
+function load_set(type, category_index, index){
+    console.log("loading set " + category_index + " " + index);
+    
+    var category = illustration_work[category_index];
+    var set = category.image_sets[index];
+    
+    navigation_images[category.curr_set].removeAttribute("id");
+    
+    curr_ill_cat = category_index;
     
     if (type == IL_INDEX){
         feature_images.style.opacity = 0;
-        var cat = illustration_category.image_sets[index];
+        
         var i;
         for (i = 0; i < art_info.children.length; i++){
-            if (i < cat.image_comp_url.length){
-                feature_images.children[i].src = cat.image_comp_url[i];
-                art_info.children[i].innerHTML = cat.image_desc[i];
+            if (i < set.image_comp_url.length){
+                feature_images.children[i].src = set.image_comp_url[i];
+                art_info.children[i].innerHTML = set.image_desc[i];
             } else {
                 feature_images.children[i].style.display = "none";
                 art_info.children[i].style.display = "none";
             }
         }
 
-        for (i = 0; i < cat.image_comp_url.length; i++){
+        for (i = 0; i < set.image_comp_url.length; i++){
             feature_images.children[i].style.display = "inline-block";
             art_info.children[i].style.display = "block";
         }
@@ -222,28 +270,43 @@ function load_set(type, index){
 
         // TODO - change full res links too
 
-        page_num.innerHTML = index + 1 + "/" + illustration_category.size;
-        illustration_category.curr_set = index;
+        page_num.innerHTML = index + 1 + "/" + category.size;
+        category.curr_set = index;
         
         setTimeout(function(){
             feature_images.style.opacity = 1;
         }, 100);
     }
     
+    feature_images.style.left = "40px";
+    navigation_images[category.curr_set].setAttribute("id", "current_image_set");
+    
 }
 
 function next_ill_set(){
     //console.log("loading next illustration set");
     
-    navigation_images[illustration_category.curr_set].removeAttribute("id");
-    var next_set = (illustration_category.curr_set + 1) % illustration_category.size;
+    var category = illustration_work[curr_ill_cat];
+    var next_set = (category.curr_set + 1) % category.size;
     
-    load_set(IL_INDEX, next_set);
-    feature_images.style.left = "40px";
-    navigation_images[illustration_category.curr_set].setAttribute("id", "current_image_set");
+    load_set(IL_INDEX, curr_ill_cat, next_set);
 }
 
 //// Utility Functions
+
+function shrink_ill_info(){
+    var ill_info = document.getElementsByClassName("inline_shrink");
+    for (var i = 0; i < ill_info.length; i++){
+        ill_info[i].style.display = "inline-block";
+    }
+}
+
+function grow_ill_info(){
+    var ill_info = document.getElementsByClassName("inline_shrink");
+    for (var i = 0; i < ill_info.length; i++){
+        ill_info[i].style.display = "block";
+    }
+}
 
 function mouse_scroll(event){
     var rolled = 0;
@@ -314,11 +377,11 @@ function fadeout(element) {
 
 //// Touch
 
-//document.addEventListener("touchstart", test, false);
+document.addEventListener("touchstart", nope, false);
 //document.addEventListener("touchmove", update_move, false);
-//function test(event){
-//    //alert("started");
-//}
+function nope(event){
+    alert("touch functionality not currently implemented, gotta use a mouse");
+}
 //
 //function update_move(event){
 //    test_info.innerHTML = "x: " + event.touches[0].pageX + " y: " + event.touches[0].pageY;

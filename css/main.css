@@ -51,7 +51,7 @@
         width: 150px;
         height: 45px;
         border-style: none dashed dashed dashed;
-        border-color: black;
+        border-color: red;
         border-width: 1px;
     }
 
@@ -77,9 +77,10 @@
     a {
         text-decoration: none;
         cursor: default;
+        color: blue;
     }
 
-    a:hover p {
+    a:hover {
         color: black;
         text-decoration: underline;
     }
@@ -126,6 +127,12 @@
         position: absolute;
         display: none;
         z-index: 998;
+        
+        
+/*
+        padding: 10px;
+        padding-top: 0px;
+*/
     }
 
     .dropdown p {
