@@ -29,12 +29,8 @@ function btn_init(){
 
             offset_x = x - mouse_x;
             offset_y = y - mouse_y;
-
             mouse_down = true;
-            clicked = true;
             curr_btn = this;
-            
-            mouse_jitter = 0;
         }
         
         curr_btn.onmouseup = function(){
@@ -68,11 +64,15 @@ function btn_init(){
         }
     }
 
+    document.onmousedown = function(){
+        clicked = true;
+        //mouse_down = true;
+        mouse_jitter = 0;
+    }
+    
     document.onmouseup = function(){
         mouse_down = false;
         drag_start = false;
-        //console.log("fading out");
-        //fadeout(drag_info);
         
         // We check for whether or not to display the illustration panel here in case the user moves his/her
         // mouse outside of the button's boundaries when he/she lets go
@@ -91,14 +91,6 @@ function btn_init(){
                         load_set(curr_btn.index, 0);
                         
                     }
-                    
-                    if (curr_btn.index == GD_INDEX &&
-                        !overlays[curr_btn.index].revealed){
-                        
-                        gd_overlay.style.top = "0px";
-                        fadeout(drag_info);
-                        
-                    }
 
                     curr_btn.y = 17;
                     curr_btn.style.top = 17+"px";
@@ -111,9 +103,29 @@ function btn_init(){
                     // show the overlay
                     overlays[curr_btn.index].style.display = "inline-block";
                     hide_other_buttons(curr_btn.index);
-                    overlays[curr_btn.index].revealed = true;
-
                     header.style.display = "block";
+                    
+                    if (curr_btn.index == GD_INDEX &&
+                        !overlays[curr_btn.index].revealed){
+                        
+                        gd_overlay.style.top = "0px";
+                        fadeout(drag_info);
+                        
+                        if (!gd_overlay.loaded){
+                            
+                            gd_overlay.jump_values = [0];
+                            
+                            var curr_count = 0;
+                            for (var i = 0; i < gd_projects.length-1; i++){
+                                curr_count += gd_projects[i].clientHeight;
+                                gd_overlay.jump_values.push(curr_count + 40);
+                                //console.log("height: " + curr_count);
+                            }
+                            gd_overlay.loaded = true;
+                        }
+                    }
+                    
+                    overlays[curr_btn.index].revealed = true;
                 } else {
                     
                     // hide the overlay
@@ -135,14 +147,14 @@ function btn_init(){
             if (mouse_jitter >= 10){
                 clicked = false;
             } else {
-                if (mouse_jitter == 2){
-                    if (curr_btn.index == IL_INDEX ||
-                        curr_btn.index == GD_INDEX){
-                        
-                        //console.log("fading");
-                        //fadein(drag_info);
-                    }
-                }
+//                if (mouse_jitter == 2){
+//                    if (curr_btn.index == IL_INDEX ||
+//                        curr_btn.index == GD_INDEX){
+//                        
+//                        //console.log("fading");
+//                        //fadein(drag_info);
+//                    }
+//                }
                 mouse_jitter++;
             }
 

@@ -13,6 +13,8 @@ var feature_images = document.getElementsByClassName("feature_images")[0];
 var navigation_images = document.getElementsByClassName("navigation_images")[0].children[0].children;
 var art_info = document.getElementById("art_info").children[0];
 
+var gd_projects = document.getElementsByClassName("gd_projects");
+
 var header_name = document.getElementById("name");
 
 var HEIGHT,
@@ -40,6 +42,8 @@ var resize_timeout;
 function main(){
     illustration_overlay.revealed = false;
     gd_overlay.revealed = false;
+    
+    gd_overlay.loaded = false;
     
     btn_init();
     resize_page();
@@ -116,15 +120,15 @@ function show_buttons(){
 }
 
 function show_main(){
-    if (!curr_btn.info_opened){
-        fadein(drag_info);
-    }
+//    if (!curr_btn.info_opened){
+//        fadein(drag_info);
+//    }
     
     overlays[curr_btn.index].style.display = "none";
     show_buttons();
     overlays[curr_btn.index].revealed = false;
     header.style.display = "none";
-    name.style.display = "block";
+    header_name.style.display = "block";
     
     if (curr_btn.index == IL_INDEX){
         navigation_images[illustration_category.curr_set].removeAttribute("id");
@@ -133,12 +137,61 @@ function show_main(){
         if (curr_btn.info_opened){
             fadein(drag_info);
         }
+        
     } else if (curr_btn.index == GD_INDEX){
         
         if (curr_btn.info_opened){
             fadein(drag_info);
         }
     }
+}
+
+function gd_nav_jump(index){
+    console.log("gd_overlay.jump_values " + gd_overlay.jump_values);
+    
+    curr_btn = btns[GD_INDEX];
+    
+    if (!gd_overlay.revealed){
+        console.log("not revealed");
+        curr_btn.y = 17;
+        curr_btn.style.top = 17+"px";
+        curr_btn.info.style.top = 47+"px"; //30+17
+
+        curr_btn.x = WIDTH-340;
+        curr_btn.style.left = WIDTH-340+"px";
+        curr_btn.info.style.left = WIDTH-340+"px";
+
+        // show the overlay
+        overlays[curr_btn.index].style.display = "inline-block";
+        hide_other_buttons(curr_btn.index);
+        header.style.display = "block";
+                        
+        gd_overlay.style.top = "0px";
+        fadeout(drag_info);
+                        
+        if (!gd_overlay.loaded){
+                            
+            gd_overlay.jump_values = [0];
+                            
+            var curr_count = 0;
+            for (var i = 0; i < gd_projects.length-1; i++){
+                curr_count += gd_projects[i].clientHeight;
+                gd_overlay.jump_values.push(curr_count + 40);
+                //console.log("height: " + curr_count);
+            }
+            gd_overlay.loaded = true;
+        }
+        
+        gd_overlay.revealed = true;
+    }
+    
+    
+    if (index == 0){
+        header_name.style.display = "block";
+    } else {
+        header_name.style.display = "none";
+    }
+    gd_overlay.style.top = -gd_overlay.jump_values[index] + "px";
 }
 
 //// Load Sets
@@ -214,7 +267,7 @@ function mouse_scroll(event){
             gd_overlay.style.top = new_y + "px";
         }
         
-        console.log(new_y);
+        //console.log(new_y);
         
         if (new_y > -120){
             header_name.style.display = "block";

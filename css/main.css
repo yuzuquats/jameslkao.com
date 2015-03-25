@@ -9,6 +9,7 @@
     body {
         margin: 0px;
         margin-top: 18px;
+        #height: 100%;
     }
 
     #name {
@@ -75,6 +76,7 @@
 
     a {
         text-decoration: none;
+        cursor: default;
     }
 
     a:hover p {
@@ -85,6 +87,14 @@
     #test_info {
         position: absolute;
         bottom: 100px;
+    }
+
+    #resume {
+        color: black;
+    }
+
+    #resume:hover {
+        cursor: pointer;
     }
 
 /*  Buttons  */
