@@ -379,10 +379,14 @@ function fadeout(element) {
 
 //// Touch
 
+var nope_revealed = false;
 document.addEventListener("touchstart", nope, false);
 //document.addEventListener("touchmove", update_move, false);
 function nope(event){
-    alert("touch functionality not currently implemented, gotta use a mouse");
+    if (!nope_revealed){
+        alert("touch functionality not currently implemented, gotta use a mouse");
+        nope_revealed = true;
+    }
 }
 //
 //function update_move(event){

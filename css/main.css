@@ -18,6 +18,7 @@
         width: auto;
         text-decoration: underline;
         font-size: 16px;
+        cursor: pointer;
     }
 
     #header {
