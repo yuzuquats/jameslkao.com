@@ -1,3 +1,5 @@
+DEBUG = true
+
 var btns = document.getElementsByClassName("btn");
 var infos = document.getElementsByClassName("dropdown");
 
@@ -10,7 +12,6 @@ var header = document.getElementById("header");
 var page_num = document.getElementById("page_num");
 
 var feature_images = document.getElementsByClassName("feature_images")[0];
-var navigation_images = document.getElementsByClassName("navigation_images")[0].children[0].children;
 var art_info = document.getElementById("art_info").children[0];
 
 var gd_projects = document.getElementsByClassName("gd_projects");
@@ -39,7 +40,11 @@ var loaded = false;
 
 main();
 var resize_timeout;
-function main(){
+function main() {
+    if (DEBUG) {
+        $(".debug").css("display", "block");
+    }
+
     illustration_overlay.revealed = false;
     gd_overlay.revealed = false;
     gd_overlay.loaded = false;
@@ -61,8 +66,6 @@ function main(){
     document.addEventListener("DOMMouseScroll", mouse_scroll, false);
     
     console.log("complete");
-    
-    //hide_other_buttons(GD_INDEX);
 }
 
 function resize_page(){
@@ -96,7 +99,6 @@ function resize_page(){
             btns[i].style.top = "50px";
             btns[i].style.left = "40px";
             btns[i].info_opened = true;
-            //btns[i].info.style.display = "block";
             
         } else {
             btns[i].style.top = Math.random()*(HEIGHT - 300) + 150 + "px";
@@ -127,10 +129,6 @@ function show_buttons(){
 }
 
 function show_main(){
-//    if (!curr_btn.info_opened){
-//        fadein(drag_info);
-//    }
-    
     overlays[curr_btn.index].style.display = "none";
     show_buttons();
     overlays[curr_btn.index].revealed = false;
@@ -139,9 +137,6 @@ function show_main(){
     
     if (curr_btn.index == IL_INDEX){
         var cat = illustration_work[curr_ill_cat];
-        
-        navigation_images[cat.curr_set].removeAttribute("id");
-        navigation_images[0].setAttribute("id", "current_image_set");
         
         if (curr_btn.info_opened){
             fadein(drag_info);
@@ -156,8 +151,6 @@ function show_main(){
 }
 
 function gd_nav_jump(index){
-    //console.log("gd_overlay.jump_values " + gd_overlay.jump_values);
-    
     curr_btn = btns[GD_INDEX];
     
     if (!gd_overlay.revealed){
@@ -173,7 +166,6 @@ function gd_nav_jump(index){
         // show the overlay
         overlays[curr_btn.index].style.display = "inline-block";
         hide_other_buttons(curr_btn.index);
-        //header.style.display = "block";
                         
         gd_overlay.style.top = "0px";
         fadeout(drag_info);
@@ -186,7 +178,6 @@ function gd_nav_jump(index){
             for (var i = 0; i < gd_projects.length-1; i++){
                 curr_count += gd_projects[i].clientHeight;
                 gd_overlay.jump_values.push(curr_count + 40);
-                //console.log("height: " + curr_count);
             }
             gd_overlay.loaded = true;
         }
@@ -245,8 +236,6 @@ function load_set(type, category_index, index){
     var category = illustration_work[category_index];
     var set = category.image_sets[index];
     
-    navigation_images[category.curr_set].removeAttribute("id");
-    
     curr_ill_cat = category_index;
     
     if (type == IL_INDEX){
@@ -270,8 +259,6 @@ function load_set(type, category_index, index){
 
         feature_images.children[feature_images.children.length-1].style.display = "inline-block";
 
-        // TODO - change full res links too
-
         page_num.innerHTML = index + 1 + "/" + category.size;
         category.curr_set = index;
         
@@ -281,13 +268,9 @@ function load_set(type, category_index, index){
     }
     
     feature_images.style.left = "40px";
-    navigation_images[category.curr_set].setAttribute("id", "current_image_set");
-    
 }
 
 function next_ill_set(){
-    //console.log("loading next illustration set");
-    
     var category = illustration_work[curr_ill_cat];
     var next_set = (category.curr_set + 1) % category.size;
     
@@ -331,9 +314,7 @@ function mouse_scroll(event){
         } else {
             gd_overlay.style.top = new_y + "px";
         }
-        
-        //console.log(new_y);
-        
+
         if (new_y > -120){
             header_name.style.display = "block";
         } else {
@@ -341,8 +322,6 @@ function mouse_scroll(event){
         }
         
     }
-    
-    //console.log(rolled);
 }
 
 function px_to_int(px){
@@ -381,14 +360,9 @@ function fadeout(element) {
 
 var nope_revealed = false;
 document.addEventListener("touchstart", nope, false);
-//document.addEventListener("touchmove", update_move, false);
 function nope(event){
     if (!nope_revealed){
         alert("touch functionality not currently implemented, gotta use a mouse");
         nope_revealed = true;
     }
 }
-//
-//function update_move(event){
-//    test_info.innerHTML = "x: " + event.touches[0].pageX + " y: " + event.touches[0].pageY;
-//}

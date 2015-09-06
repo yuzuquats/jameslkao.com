@@ -9,20 +9,6 @@ function btn_init(){
         curr_btn.info_opened = false;
         curr_btn.info = infos[i];
         
-//        if (i != BIO_INDEX){
-//            curr_btn.style.top = Math.random()*(HEIGHT - 200) + 150 + "px";
-//            curr_btn.style.left = Math.random()*(WIDTH - 200) + 350 + "px";
-//        } else {
-//            curr_btn.style.top = "50px";
-//            curr_btn.style.left = "40px";
-//            curr_btn.info_opened = true;
-//            curr_btn.info.style.display = "block";
-//        }
-//        
-//        curr_btn.info.style.top = px_to_int(curr_btn.style.top)+30 + "px";
-//        curr_btn.info.style.left = curr_btn.style.left;
-        
-        
         curr_btn.onmousedown = function(){
             x = px_to_int(this.style.left);
             y = px_to_int(this.style.top);
@@ -146,20 +132,10 @@ function btn_init(){
     document.onmousemove = function(event){
         mouse_x = event.pageX;
         mouse_y = event.pageY;
-        // IMPORTANT -- jitter is not determined in terms of pixels -- could have problems with certain browsers that
-        // dont sample enough points, maybe even hardware dependent?
         if (mouse_down == true){
             if (mouse_jitter >= 10){
                 clicked = false;
             } else {
-//                if (mouse_jitter == 2){
-//                    if (curr_btn.index == IL_INDEX ||
-//                        curr_btn.index == GD_INDEX){
-//                        
-//                        //console.log("fading");
-//                        //fadein(drag_info);
-//                    }
-//                }
                 mouse_jitter++;
             }
 
@@ -182,7 +158,6 @@ function btn_init(){
             
         } else {
             if (drag_start){
-                //console.log("dragging");
                 feature_images.style.left = feature_images.offset_x + mouse_x - feature_images.mouse_x + "px";
             }
         }
@@ -196,7 +171,6 @@ function btn_init(){
         
         drag_start = true;
         illustration_overlay.style.cursor = "default";
-        //console.log("started dragging " + feature_images.offset_x + " " + feature_images.mouse_x);
     }
     
 }

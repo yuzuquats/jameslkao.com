@@ -72,13 +72,13 @@
     }
 
     a p {
-        color: blue;
+        color: black;
     }
 
     a {
         text-decoration: none;
         cursor: pointer;
-        color: blue;
+        color: black;
     }
 
     a:hover {
@@ -109,6 +109,10 @@
     
     #todo p:first-child {
         margin-bottom: 10px;
+    }
+
+    .debug {
+        display: none;
     }
 
     #todo p {

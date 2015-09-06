@@ -83,7 +83,7 @@ var sk_set_1, sk_set_2, sk_set_3;
 }
 
 function category(name){
-    this.name = name +  '<span class="arrow">&#149</span>';
+    this.name = name +  ' <span class="arrow">&#149</span>';
     this.image_sets = [];
     this.curr_set = 0;
     this.size = 0;
@@ -108,8 +108,6 @@ function image_set(prefix, set_name, thumbnail){
         this.image_desc.push(image_desc);
         this.image_comp_url.push(prefix + set_name + image_url + ".jpg");
         this.image_full_url.push(prefix + set_name + "full/f_" +image_url + ".jpg");
-        //console.log(this.image_comp_url[this.image_comp_url.length-1]);
-        //console.log(this.image_full_url[this.image_full_url.length-1]);
         this.size++;
     }
     

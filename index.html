@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -13,122 +13,71 @@
         <div id="drag_info"><p>Drag Here</p></div>
         <p id="header">personal work <span class="arrow">&#149</span></p>
         
-        <div id="todo">
+        <div id="todo" class="debug">
             <p>TODO</p>
-            <p>thumbnails</p>
             <p>full resolution images</p>
             <p>touch functionality</p>
-            <p>gd - hyperlinks when there are 2 columns</p>
             <p>ill - previous button</p>
         </div>
         
         <button type="button" class="btn">bio <span class="arrow">&#168</span></button>
-            <div class="dropdown">
-                <p>about/</p>
-                <div class="subdir">
-                    <p style="width: 250px">Hey there! I'm a student studying graphic design at RISD and computer science at Brown. I love making things so come click and drag some of those buttons to see my work.</p>
-                </div>
-                <a target="_blank" href="img/resume_risd.pdf"><p id="resume">resume (pdf)</p></a>
-                <p>contact/</p>
-                <div class="subdir">
-                    <p>james.l.kao@gmail.com</p>
-                    <p>408.513.4671</p>
-                </div>
+        <div class="dropdown">
+            <p>about/</p>
+            <div class="subdir">
+                <p style="width: 250px">Hey there! I'm a student studying graphic design at RISD and computer science at Brown. Click and drag some of the buttons to see my work.</p>
             </div>
+            <a target="_blank" href="james_kao_resume.pdf"><p id="resume">resume (pdf)</p></a>
+            <p>contact/</p>
+            <div class="subdir">
+                <p>james.l.kao@gmail.com</p>
+                <p>408.513.4671</p>
+                <a target="_blank" href="https://github.com/yuzuquats"><p>https://github.com/yuzuquats</p></a>
+</div>
+        </div>
+
         <button type="button" class="btn">illustration <span class="arrow">&#168</span></button>
-            <div class="dropdown">
-                <div>
-                    <p class="inline_shrink">personal work/</p>
-                    <div class="inline_shrink subdir">
-                        <p>
-                            <a onclick="ill_nav_jump(0, 0)">[1]</a>
-                            <a onclick="ill_nav_jump(0, 1)">[2]</a>
-                            <a onclick="ill_nav_jump(0, 2)">[3]</a>
-<!--                            <a onclick="ill_nav_jump(0, 3)">[4]</a> -->
-                        </p>
-                    </div>
+        <div class="dropdown">
+            <div>
+                <p class="inline_shrink">personal work/</p>
+                <div class="inline_shrink subdir">
+                    <p>
+                        <a onclick="ill_nav_jump(0, 0)">[1]</a>
+                        <a onclick="ill_nav_jump(0, 1)">[2]</a>
+                        <a onclick="ill_nav_jump(0, 2)">[3]</a>
+                    </p>
                 </div>
-                <div>
-                    <p class="inline_shrink">entertainment design/</p>
-                    <div class="inline_shrink subdir">
-                        <p>
-                            <a onclick="ill_nav_jump(1, 0)">[1]</a>
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <p class="inline_shrink">sketches/</p>
-                    <div class="inline_shrink subdir">
-                        <p>
-                            <a onclick="ill_nav_jump(2, 0)">[1]</a>
-                            <a onclick="ill_nav_jump(2, 1)">[2]</a>
-                            <a onclick="ill_nav_jump(2, 2)">[3]</a>
-                        </p>
-                    </div>
-                </div>
-<!--
-                <div class="subdir">
-                    <a><p>personal work <span class="arrow">&#168</span></p></a>
-                    <a><p>entertainment design <span class="arrow">&#168</span></p></a>
-                    <a><p>editorial and other work <span class="arrow">&#168</span></p></a>
-                </div>
--->
             </div>
-        <!-- dotted red lines?-->
+            <div>
+                <p class="inline_shrink">entertainment design/</p>
+                <div class="inline_shrink subdir">
+                    <p>
+                        <a onclick="ill_nav_jump(1, 0)">[1]</a>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <p class="inline_shrink">sketches/</p>
+                <div class="inline_shrink subdir">
+                    <p>
+                        <a onclick="ill_nav_jump(2, 0)">[1]</a>
+                        <a onclick="ill_nav_jump(2, 1)">[2]</a>
+                        <a onclick="ill_nav_jump(2, 2)">[3]</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <button type="button" class="btn">graphic design <span class="arrow">&#168</span></button>
-            <div class="dropdown">
-                <p>classes/</p>
-                <div class="subdir">
-                    <p>foundation design studio 1 + 2</p>
-                    <p>typography 1</p>
-                    <p>*typography 2</p>
-                    <p>*color</p>
-                    <p class="footnote">* - in-progress class</p>
-                </div>
-                <p>projects/</p>
-                <div class="subdir">
-                    <a onclick="gd_nav_jump(0)"><p>identity series <span class="arrow">&#168</span></p></a>
-                    <a onclick="gd_nav_jump(1)"><p>moving type <span class="arrow">&#168</span></p></a>
-                    <a onclick="gd_nav_jump(2)"><p>synesthesia <span class="arrow">&#168</span></p></a>
-                </div>
-                <p>work/</p>
-                <div class="subdir">
-                    <a onclick="gd_nav_jump(3)"><p>typography <span class="arrow">&#168</span></p></a>
-                </div>
-            </div>
+        <div class="dropdown">
+            <p>nothing to see here yet</p>
+        </div>
+
         <button type="button" class="btn">computer science <span class="arrow">&#168</span></button>
-            <div class="dropdown">
-                <p>classes/</p>
-                <div class="subdir">
-                    <p>cs61a  - Structure and Interpretation of Computer Programs</p>
-                    <p>cs16   - Algorithms and Data Structures</p>
-                    <p>cs70   - Discrete Mathematics and Probability Theory</p>
-                    <p>math54 - Linear Algebra</p>
-                    <p>cs157  - Design and Analysis of Algorithms</p>
-                    <p>cs33   - Introduction to Computer Systems</p>
-                    <p>*cs167 - Operating Systems</p>
-                    <p>*cs169 - Operating Systems lab</p>
-                    <p class="footnote">* - in-progress class</p>
-                </div>
-                <p>projects/</p>
-                <div class="subdir">
-                    <a target="_blank" href="http://pi-xel.heroku.com"><p>pixelcraft - a game where individuals can create their own sprites and animations <span class="arrow">&#168</span></p></a>
-                    <p>weenix     - a simple operating system based off of linux built mostly from scratch</p>
-                    <p>snowcast   - a simple client to radio station program that uses UDP and TCP protocols</p>
-                    <p>scheme interpreter- an interpreter for a subset of the Scheme Language</p>
-                </div>
-            </div>
-        
+        <div class="dropdown">
+            <p>nothing to see here yet</p>
+        </div>
+    
         <div id="illustration_overlay">
-            <div class="navigation_images">
-                <div class="positioner">
-                    <img id="current_image_set" style="width: 75px">
-                    <img style="width: 150px">
-                    <img style="width: 50px">
-<!--                    <img style="width: 75px">-->
-                    <!--<img style="width: 100px">-->
-                </div>
-            </div>
             <div class="feature_images"> <!-- 10 images max (tmp) -->
                 <img draggable="false">
                 <img draggable="false">
@@ -166,51 +115,13 @@
         <div id="gd_overlay">
             <div class="feature_projects">
                 <div class="gd_projects">
-                    <h1>Identity of a Forest. 2015.</h1>
-<!--                    <h1>Identity Series</h1>-->
-                    <p>[Description]</p>
-                    <a target="_blank" href="http://woooombatwommmmmbatttt.herokuapp.com/4"><p>view here</p></a>
-                    <div class="image_set">
-                        <img class="l1">
-                        <img class="l2_1">
-                        <img class="l2_2">
-                        <img class="l3_1">
-                        <img class="l3_1">
-                        <img class="l3_2">
-                    </div>
-                </div>
-                <div class="gd_projects">
-                    <h1>[project 2] more projects soon!</h1>
-<!--                    <h1>Moving Type</h1>-->
-                    <p>[Description]</p>
-                    <div class="image_set">
-                        <img class="l2_1">
-                        <img class="l2_2">
-                    </div>
-                </div>
-                <div class="gd_projects">
-                    <h1>[project 3]</h1>
-<!--                    <h1>Synesthesia Type</h1>-->
-                    <p>[Description]</p>
-                    <div class="image_set">
-                        <img class="l3_1">
-                        <img class="l3_1">
-                        <img class="l3_2">
-                    </div>
-                </div>
-                <div class="gd_projects">
-                    <h1>[project 4]</h1>
-<!--                    <h1>Typography</h1>-->
-                    <p>[Description]</p>
-                    <div class="image_set">
-                        <img class="l2_1">
-                        <img class="l2_2">
-                    </div>
-                </div>
+                    <h1>Nothing to see here yet</h1>
             </div>
         </div>
     </body>
-    <script type="text/javascript" src="js/buttons.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/content.js"></script>
 </html>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js" /></script>
+<script type="text/javascript" src="js/buttons.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/content.js"></script>
