@@ -1,4 +1,4 @@
-DEBUG = true
+DEBUG = false
 
 var btns = document.getElementsByClassName("btn");
 var infos = document.getElementsByClassName("dropdown");
